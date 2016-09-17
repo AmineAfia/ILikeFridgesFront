@@ -51,13 +51,16 @@ class Contact extends Component {
       items: []
     }
     this.renderRow = this.renderRow.bind(this)
+    
+    firebase.database().ref('items').once('value').then((snapshot) => {
+            const items = snapshot.val();
+            console.log(items);
+            this.setState({items});
+          });
   }
 
   componentWillMount() {
-    return firebase.database().ref('items').once('value').then(function(snapshot) {
-      const items = snapshot.val()
-      console.log(items);
-    });
+
   }
 
   renderRow (rowData, sectionID) {
@@ -83,14 +86,12 @@ class Contact extends Component {
         </List>
         <List containerStyle={{marginBottom: 20}}>
         {
-          list2.map((l, i) => (
+          this.state.items.map((l, i) => (
             <ListItem
-              roundAvatar
-              avatar={l.avatar_url}
               key={i}
               onPress={log}
-              title={l.name}
-              subtitle={l.subtitle}
+              title={l.description}
+              subtitle={JSON.stringify(l.amount)}
             />
           ))
         }

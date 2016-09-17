@@ -56,209 +56,15 @@ class About extends Component {
       <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.headerContainer}>
           <Icon color='white' name='invert-colors' size={62} />
-          <Text style={styles.heading}>Components</Text>
+          <Text style={styles.heading}>This App is made with love at HackZurich.</Text>
         </View>
-        <View style={{marginTop: 20}}>
-          <ButtonGroup
-            textStyle={{fontSize: 13}}
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons} />
-        </View>
-        <View style={styles.container}>
-          <Card
-            title='CARD WITH DIVIDER'>
-            {
-              users.map((u, i) => {
-                return (
-                  <View key={i} style={styles.user}>
-                    <Image
-                      style={styles.image}
-                      resizeMode='center'
-                      source={{uri: u.avatar}} />
-                    <Text style={styles.name}>{u.name}</Text>
-                  </View>
-                )
-              })
-            }
-          </Card>
-          <Card containerStyle={{marginTop: 15}} title='FONTS'>
-            <Text style={styles.fonts} h1>h1 Heading</Text>
-            <Text style={styles.fonts} h2>h2 Heading</Text>
-            <Text style={styles.fonts} h3>h3 Heading</Text>
-            <Text style={styles.fonts} h4>h4 Heading</Text>
-            <Text style={styles.fonts} >Normal Text</Text>
-          </Card>
-          <Card
-            title='ICONS'
-            containerStyle={{marginTop: 15}}>
-            <View style={[styles.social, {marginTop: 15, marginBottom: 15, justifyContent: 'space-around'}]}>
-              <RNElements.Icon
-                onPress={() => console.log('hello')}
-                type='font-awesome'
-                color='#e14329'
-                name='barcode' />
-              <RNElements.Icon
-                onPress={() => console.log('hello')}
-                type='font-awesome'
-                color='#02b875'
-                name='rocket' />
-              <RNElements.Icon
-                onPress={() => console.log('hello')}
-                color='#000000'
-                name='snapchat-ghost'
-                type='font-awesome' />
-              <RNElements.Icon
-                color='#6441A5'
-                name='btc'
-                type='font-awesome'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                color='#f50'
-                name='heartbeat'
-                type='font-awesome'
-                onPress={() => console.log('hello')} />
-            </View>
-             <View style={[styles.social,{marginTop: 15, marginBottom: 15, justifyContent: 'space-around'}]}>
-              <RNElements.Icon
-                name='rowing'
-                color='#673AB7'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                name='g-translate'
-                color='#03A9F4'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                color='#009688'
-                name='sc-telegram'
-                type='evilicon'
-                onPress={() => console.log('hello')} /> 
-              <RNElements.Icon
-                color='#8BC34A'
-                name='social-apple'
-                type='foundation'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                color='#FFC107'
-                name='ios-american-football'
-                type='ionicon'
-                onPress={() => console.log('hello')} />
-             </View>
 
-             <View>
-              <View style={[styles.social,{ justifyContent: 'space-around'}]}>
-                <RNElements.Icon
-                  raised
-                  name='vpn-key'
-                  color='#E91E63'
-                  onPress={() => console.log('hello')} />
-                <RNElements.Icon
-                  raised
-                  name='ring-volume'
-                  color='#3F51B5'
-                  onPress={() => console.log('hello')} />
-                <RNElements.Icon
-                  raised
-                  color='#00BCD4'
-                  name='weekend'
-                  onPress={() => console.log('hello')} /> 
-                <RNElements.Icon
-                  raised
-                  color='#CDDC39'
-                  name='bubble-chart'
-                  onPress={() => console.log('hello')} />
-                <RNElements.Icon
-                  raised
-                  color='#FF5722'
-                  name='burst-mode'
-                  onPress={() => console.log('hello')} />
-              </View>
-             </View>
-
-             <View style={[styles.social,{ justifyContent: 'space-around'}]}>
-              <RNElements.Icon
-                reverse
-                raised
-                name='account-balance'
-                color='#673AB7'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                raised
-                name='android'
-                color='#03A9F4'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                raised
-                color='#009688'
-                name='code'
-                onPress={() => console.log('hello')} /> 
-              <RNElements.Icon
-                reverse
-                raised
-                color='#8BC34A'
-                name='card-travel'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                raised
-                color='#FF9800'
-                name='extension'
-                onPress={() => console.log('hello')} />
-            </View>
-
-            <View style={[styles.social,{ justifyContent: 'space-around'}]}>
-              <RNElements.Icon
-                reverse
-                name='group-work'
-                color='#E91E63'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                name='lightbulb-outline'
-                color='#3F51B5'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                color='#00BCD4'
-                name='pets'
-                onPress={() => console.log('hello')} /> 
-              <RNElements.Icon
-                reverse
-                color='#CDDC39'
-                name='polymer'
-                onPress={() => console.log('hello')} />
-              <RNElements.Icon
-                reverse
-                color='#FF5722'
-                name='touch-app'
-                onPress={() => console.log('hello')} />
-            </View>
-          </Card>
+        <View style={[styles.social,{ justifyContent: 'space-around'}]}>
           <Card
-            title='SOCIAL ICONS'
+            title='SOCIAL NETWORKS'
             containerStyle={{marginTop: 15}}>
             <View style={[styles.social, { marginTop: 13, justifyContent: 'space-around'}]}>
-              <SocialIcon
-                raised={false}
-                type='gitlab'
-                onPress={() => console.log('hi!')}
-              />
-              <SocialIcon
-                type='medium'
-                onPress={() => console.log('hi2!')}
-              />
-              <SocialIcon
-                type='github-alt'
-                onPress={() => console.log('hi3!')}
-              />
-              <SocialIcon
-                type='twitch'
-              />
-              <SocialIcon
-                type='soundcloud'
-              />
+
             </View>
             <View style={[styles.social, { marginTop: 13, justifyContent: 'space-around'}]}>
               <SocialIcon
@@ -273,74 +79,10 @@ class About extends Component {
               <SocialIcon
                 type='instagram'
                 onPress={() => console.log('hi3!')}
-              />
-              <SocialIcon
-                raised={false}
-                type='codepen'
               />
               <SocialIcon
                 raised={false}
                 type='youtube'
-              />
-            </View>
-          </Card>
-          <Card
-            title='LIGHT SOCIAL ICONS'
-            containerStyle={{marginTop: 15}}>
-            <View style={[styles.social, {justifyContent: 'space-around'}]}>
-              <SocialIcon
-                light
-                raised={false}
-                type='gitlab'
-                onPress={() => console.log('hi!')}
-              />
-              <SocialIcon
-                light
-                type='medium'
-                onPress={() => console.log('hi2!')}
-              />
-              <SocialIcon
-                light
-                type='github-alt'
-                onPress={() => console.log('hi3!')}
-              />
-              <SocialIcon
-                light
-                type='twitch'
-              />
-              <SocialIcon
-                light
-                type='soundcloud'
-              />
-            </View>
-          </Card>
-          <Card
-            containerStyle={{marginTop: 15, marginBottom: 15}}
-            title='SOCIAL BUTTONS'>
-            <View style={styles.socialButtons}>
-              <SocialIcon
-                button
-                type='medium'
-              />
-              <SocialIcon
-                button
-                type='twitch'
-              />
-              <SocialIcon
-                title='Sign In With Facebook'
-                button
-                type='facebook'
-              />
-              <SocialIcon
-                title='Some Twitter Message'
-                button
-                type='twitter'
-              />
-              <SocialIcon
-                light
-                button
-                title='Some Instagram Message'
-                type='instagram'
               />
             </View>
           </Card>
@@ -355,7 +97,7 @@ styles = StyleSheet.create({
     flex: 1
   },
   headerContainer: {
-    marginTop: 60,
+    marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 40,
@@ -367,7 +109,7 @@ styles = StyleSheet.create({
     fontSize: 22
   },
   fonts: {
-    marginBottom: 8
+    marginBottom: 8,
   },
   user: {
     flexDirection: 'row',
