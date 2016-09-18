@@ -1,17 +1,18 @@
 /**
  * @providesModule HSNavTitleIcon
+ *     <Image
+      source={src}
+      style={styles.logo} />
  */
 
 import React from 'react'
-import { View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet, Text } from 'react-native'
 
 let styles = {}
 
 const NavTitleIcon = ({src}) => (
   <View>
-    <Image
-      source={src}
-      style={styles.logo} />
+  <Text style={styles.heading} h2>Frigometre</Text>
   </View>
 )
 
@@ -20,7 +21,12 @@ styles = StyleSheet.create({
   },
   logo: {
     width: 160,
-    height: 34
+    height: 32
+  },
+  heading: {
+    color: 'white',
+    marginTop: 10,
+    fontSize: 22
   }
 })
 

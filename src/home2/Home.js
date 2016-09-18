@@ -17,6 +17,33 @@ const log = () => {
   console.log('hello!')
 }
 
+
+        //   <Card
+        //     title='FRIDGE STARS'>
+        //     {
+        //       food.map((u, i) => {
+        //         return (
+        //           <View key={i} style={styles.user}>
+        //             <Image
+        //               style={styles.image}
+        //               resizeMode='center'
+        //               source={{uri: u.avatar}} />
+        //             <Text style={styles.name}>{u.name}</Text>
+        //           </View>
+        //         )
+        //       })
+        //     }
+        //    </Card>
+
+        // <Button
+        //   fontFamily='Lato'
+        //   raised
+        //   backgroundColor='#FF5722'
+        //   icon={{name: 'center-focus-weak'}}
+        //   title='SCAN RECEIPT' />
+
+
+
 class Home extends Component {
   render () {
     const { toggleSideMenu } = this.props

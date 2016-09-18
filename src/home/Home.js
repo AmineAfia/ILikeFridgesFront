@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { ScrollView, View, StyleSheet, Platform, Image, Dimensions } from 'react-native'
+import { ScrollView, View, StyleSheet, Platform, Image, Dimensions, TextInput, TouchableHighlight } from 'react-native'
 import colors from 'HSColors'
 import socialColors from 'HSSocialColors'
 import fonts from 'HSFonts'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Camera from 'react-native-camera';
 import * as firebase from 'firebase';
+import { takeSnapshot } from "react-native-view-shot";
 
 import {
   Button,
@@ -44,35 +45,23 @@ const food = [
 
 class Home extends Component {
 
-  // constructor(props) {
-  //   super(props, ...arguments);
-  //   this.state = {
-  //     hidden: false,
-  //     dataSource: new ListView.DataSource({
-  //       rowHasChanged: (row1, row2) => row1 !== row2,
-  //     })
-  //   };
-    
-  //   const toggle = () => {
-  //       this.setState({
-  //           hidden: !this.state.hidden
-  //       });
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.camera = null;
 
+    this.state = {
+      camera: {
+        aspect: Camera.constants.Aspect.fill,
+        captureTarget: Camera.constants.CaptureTarget.cameraRoll,
+        type: Camera.constants.Type.back,
+        orientation: Camera.constants.Orientation.auto,
+        flashMode: Camera.constants.FlashMode.auto,
+      },
+      isRecording: false
+    };
 
-  // componentDidMount() {
-  // () => {
-  //   firebase.database().ref('items').get({
-  //     console.log('got the json');
-  //   })
-  // }
+  }
 
-  //   this.setState({
-  //     dataSource: this.state.dataSource.cloneWithRows([{ title: 'Pizza' }])
-  //   })
-
-  // }
 
   render () {
     const { toggleSideMenu } = this.props
@@ -80,32 +69,7 @@ class Home extends Component {
       <ScrollView
         ref='ScrollView'
         style={{backgroundColor: 'white'}}>
-        <View style={styles.hero}>
-        </View>
 
-          <Card
-            title='FRIDGE STARS'>
-            {
-              food.map((u, i) => {
-                return (
-                  <View key={i} style={styles.user}>
-                    <Image
-                      style={styles.image}
-                      resizeMode='center'
-                      source={{uri: u.avatar}} />
-                    <Text style={styles.name}>{u.name}</Text>
-                  </View>
-                )
-              })
-            }
-           </Card>
-
-        <Button
-          fontFamily='Lato'
-          raised
-          backgroundColor='#FF5722'
-          icon={{name: 'center-focus-weak'}}
-          title='SCAN RECEIPT' />
 
                 <View style={styles.container}>
                   <Camera
@@ -114,26 +78,47 @@ class Home extends Component {
                     }}
                     style={styles.preview}
                     aspect={Camera.constants.Aspect.fill}>
-                    <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+                    <Button
+                    style={styles.capture}
+                      fontFamily='Lato'
+                      raised
+                      backgroundColor='#FF5722'
+                      icon={{name: 'center-focus-weak'}}
+                      title='SCAN RECEIPT'
+                      onPress={this._takePicture.bind(this)} />
                   </Camera>
-                </View>
-
+                </View> 
       </ScrollView>
     )
   }
 
-  takePicture() {
-    this.camera.capture()
-      .then((data) => console.log(data))
+   _takePicture() {
+      this.camera.capture()
+      .then((data) => {
+      console.log(data)
+      const message = '133506F7-416E-4A12-A8E6-2AB0521919B3';
+      // "assets-library://asset/asset.JPG?id=9E387BE1-5408-4CAD-9C9E-92D22F998264&ext=JPG"
+      var storageRef = firebase.storage().ref('assets-library://');
+
+      var mountainsRef = storageRef.child('asset.jpg'); 
+      var mountainImagesRef = storageRef.child('asset/asset.jpg');
+      // var mountainImagesPathRef = storageRef.child('assets-library://asset/asset.jpg');
+      
+       mountainsRef.name === mountainImagesRef.name         
+       mountainsRef.fullPath === mountainImagesRef.fullPath   
+      console.log(message);
+      storageRef.putString(message, 'base64url').then(function(snapshot) {
+        console.log('Uploaded a base64 string!');
+      })})
       .catch(err => console.error(err));
   }
-
 }
+
 
 styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 15
+    margin: 0
   },
   headerContainer: {
     marginTop: 60,
@@ -176,7 +161,7 @@ styles = StyleSheet.create({
     marginTop: 5
   },
   preview: {
-    flex: 1,
+    flex: 10,
     justifyContent: 'flex-end',
     alignItems: 'center',
     height: Dimensions.get('window').height,
@@ -187,8 +172,8 @@ styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 5,
     color: '#000',
-    padding: 10,
-    margin: 40
+    padding: 1000,
+    margin: 1000
   },
   buttonText: {
         color: '#000'

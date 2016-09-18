@@ -13,6 +13,8 @@ const firebaseConfig = {
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+const storage = firebase.storage();
+const storageRef = storage.ref();
 const HackathonStarter = () => (
   <AppRootContainer />
 )

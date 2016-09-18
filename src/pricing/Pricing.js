@@ -52,15 +52,14 @@ class Contact extends Component {
     }
     this.renderRow = this.renderRow.bind(this)
     
+  }
+
+  componentWillMount() {
     firebase.database().ref('items').once('value').then((snapshot) => {
             const items = snapshot.val();
             console.log(items);
             this.setState({items});
           });
-  }
-
-  componentWillMount() {
-
   }
 
   renderRow (rowData, sectionID) {
